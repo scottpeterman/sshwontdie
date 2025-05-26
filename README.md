@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://raw.githubusercontent.com/scottpeterman/sshwontdie/259485277077dade7ce41327b43d9d35d7ffae8a/logo.svg" alt="SSHWontDie Logo" width="200"/>
+</div>
+
 # SSHWontDie - Multi-Language SSH Automation Toolkit
 
 A comprehensive collection of SSH automation libraries implementing consistent methodologies across multiple programming languages. All libraries share a core architectural pattern: **invoke-shell mode with prompt synchronization** for reliable multi-command execution, plus traditional exec mode for simple operations.
@@ -467,6 +471,11 @@ We welcome contributions across all languages:
 - Performance optimization across implementations
 - Documentation and example improvements
 
+**Long Term Vision:**
+- Machine learning device behavior prediction
+- Network topology discovery
+- Cloud-native deployment options
+- Integration with major NMS platforms
 
 ## 📄 License
 
