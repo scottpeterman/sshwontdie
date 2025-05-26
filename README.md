@@ -125,7 +125,7 @@ All libraries implement the same battle-tested methodology centered around **inv
 ### Invoke-Shell Command Flow
 
 ```mermaid
-graph TD
+graph LR
     A[SSH Connect] --> B[Invoke Shell]
     B --> C[Detect Initial Prompt]
     C --> D[Send Command 1]
@@ -138,6 +138,16 @@ graph TD
     E --> J[Timeout Protection]
     G --> J
     J --> K[Graceful Exit]
+    
+    classDef connect fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef command fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef sync fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef safety fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    
+    class A,B connect
+    class C,D,F,H command
+    class E,G,I sync
+    class J,K safety
 ```
 
 ### Key Synchronization Features
