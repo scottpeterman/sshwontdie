@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Main-Class: com.scottpeterman.sshpassj.sshpassj
+Class-Path: bcprov-jdk15on-1.70.jar bcutil-jdk15on-1.70.jar bcutil-jdk18
+ on-1.75.jar sshj-0.38.0.jar bcprov-jdk18on-1.75.jar picocli-4.6.1.jar a
+ sn-one-0.6.0.jar bcpkix-jdk15on-1.70.jar eddsa-0.3.0.jar slf4j-api-1.7.
+ 32.jar logback-core-1.4.12.jar slf4j-simple-1.7.30.jar logback-classic-
+ 1.4.12.jar bcpkix-jdk18on-1.75.jar
+

@@ -1,0 +1,1 @@
+dotnet publish SSHPassCSharp.CLI\SSHPassCSharp.CLI.csproj -c Debug -r win-x64 -p:PublishSingleFile=true --self-contained true -o ./publish

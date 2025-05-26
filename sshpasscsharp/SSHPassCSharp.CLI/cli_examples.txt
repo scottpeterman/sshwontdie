@@ -1,0 +1,8 @@
+# Just fingerprint a device and display info
+sshclient.exe -h 172.16.101.100 -u cisco -p cisco -f -v
+
+# Fingerprint a device, save the results, and run commands
+sshclient.exe -h 172.16.101.100 -u cisco -p cisco -f -o device-info.json -c "show version,show ip interface brief"
+
+# Original usage without fingerprinting
+sshclient.exe -h 172.16.101.100 -u cisco -p cisco -c "show version" --invoke-shell

@@ -1,0 +1,5 @@
+execute mode
+node src\cli.js run --host "172.16.1.101" --user "cisco" --password "cisco" --cmds "show ver" --timeout 10 --prompt "#"
+
+shell mode
+node src\cli.js run --host "172.16.1.101" --user "cisco" --password "cisco" --cmds "term len 0,show ver,," --invoke-shell --timeout 10 --prompt "#" --prompt-count 3

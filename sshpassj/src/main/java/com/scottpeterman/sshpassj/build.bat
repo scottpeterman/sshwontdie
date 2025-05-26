@@ -1,0 +1,1 @@
+C:\Users\97685\github\portfolioDev\Java\sshpassj\out\artifacts\sshpassj_jar>native-image --no-fallback -H:ConfigurationFileDirectories=META-INF/native-image --initialize-at-build-time=all --trace-class-initialization=sun.security.x509.X509CertImpl -jar sshpassj.jar

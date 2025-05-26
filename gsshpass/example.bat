@@ -1,0 +1,2 @@
+@REM gsshpass -h "10.42.254.110:22" -u "speterman" -p "pw" -c "show system info," --invoke-shell -prompt ")>" -prompt-count 2 
+gsshpass -h "10.0.0.107:22" -u "speterman" -p "letme1n" -c "lsb_release -a" --invoke-shell -prompt "$"

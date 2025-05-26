@@ -1,0 +1,1 @@
+dotnet run --project SSHPassCSharp.CLI/SSHPassCSharp.CLI.csproj -- -h "10.0.0.108" -u "speterman" -p "letme1n" -c "whoami,pwd" --invoke-shell --prompt "$"   

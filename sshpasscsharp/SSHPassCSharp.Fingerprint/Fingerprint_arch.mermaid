@@ -1,0 +1,134 @@
+classDiagram
+    class DeviceType {
+        <<enumeration>>
+        Unknown
+        CiscoIOS
+        CiscoNXOS
+        Linux
+        ...
+        +GetDisablePagingCommand()
+        +GetIdentificationCommands()
+    }
+    
+    class DeviceInfo {
+        +string Host
+        +int Port
+        +string DetectedPrompt
+        +DeviceType DeviceType
+        +string DisablePagingCommand
+        +Dictionary CommandOutputs
+        +string RawOutput
+        +string Username
+        +string Model
+        +string Version
+        +string SerialNumber
+        +string Hostname
+        +Dictionary AdditionalInfo
+    }
+    
+    class DeviceFingerprint {
+        -SSHClient _sshClient
+        -StringBuilder _outputBuffer
+        -DeviceInfo _deviceInfo
+        -List _promptCandidates
+        +DeviceFingerprint(host, port, username, password)
+        +Fingerprint() DeviceInfo
+        -CaptureOutput(output)
+        -FindPromptCandidates(output)
+        -DeterminePrompt() string
+        -DetectDeviceType() DeviceType
+        -ExtractDeviceDetails()
+    }
+    
+    class DeviceProfile {
+        +string Host
+        +int Port
+        +string DeviceType
+        +string Prompt
+        +string DisablePagingCommand
+        +string Hostname
+        +string Username
+        +string Model
+        +string Version
+        +string SerialNumber
+        +DateTime LastFingerprinted
+        +Dictionary AdditionalInfo
+        +static FromDeviceInfo(info) DeviceProfile
+    }
+    
+    class DeviceProfileStore {
+        -List _profiles
+        -string _profilesFile
+        +DeviceProfileStore(profilesFile)
+        +LoadProfiles()
+        +SaveProfiles()
+        +AddOrUpdateProfile(profile)
+        +GetProfile(host, port) DeviceProfile
+        +GetAllProfiles() List
+        +GetProfilesByDeviceType(deviceType) List
+        +RemoveProfile(host, port) bool
+    }
+    
+    class DeviceCredential {
+        +string DeviceType
+        +string Username
+        +string Password
+        +bool IsDefault
+    }
+    
+    class DeviceCredentialsStore {
+        -List _credentials
+        -string _credentialsFile
+        +DeviceCredentialsStore(credentialsFile)
+        +LoadCredentials()
+        +SaveCredentials()
+        +AddCredential(credential)
+        +GetCredential(deviceType) DeviceCredential
+        +GetAllCredentials() List
+        +RemoveCredential(deviceType, username) bool
+    }
+    
+    class DeviceCommandResult {
+        +bool Success
+        +string Output
+        +string Error
+        +TimeSpan ExecutionTime
+    }
+    
+    class DeviceCommandRunner {
+        -DeviceProfile _profile
+        -string _password
+        -bool _pagingDisabled
+        +DeviceCommandRunner(profile, password)
+        +ExecuteCommand(command, disablePaging) DeviceCommandResult
+        +ExecuteCommands(commands, disablePaging) List
+    }
+    
+    class FingerprintManager {
+        -DeviceProfileStore _profileStore
+        -DeviceCredentialsStore _credentialsStore
+        +FingerprintManager(profileStore, credentialsStore)
+        +FingerprintDevice(host, port, username, password) DeviceProfile
+        +ExecuteCommand(host, port, command, username, password) DeviceCommandResult
+        +SaveCredential(deviceType, username, password, isDefault)
+        +GetDeviceProfile(host, port) DeviceProfile
+        +GetAllProfiles() List
+        +GetProfilesByDeviceType(deviceType) List
+        +RemoveProfile(host, port) bool
+        +GetAllCredentials() List
+        +GetCredential(deviceType) DeviceCredential
+        +RemoveCredential(deviceType, username) bool
+    }
+    
+    SSHClient <-- DeviceFingerprint
+    DeviceType <-- DeviceInfo
+    DeviceFingerprint --> DeviceInfo
+    DeviceInfo <-- DeviceProfile
+    DeviceProfileStore --> DeviceProfile
+    DeviceCredentialsStore --> DeviceCredential
+    FingerprintManager --> DeviceProfileStore
+    FingerprintManager --> DeviceCredentialsStore
+    FingerprintManager --> DeviceFingerprint
+    DeviceCommandRunner --> DeviceProfile
+    DeviceCommandRunner --> DeviceCommandResult
+    FingerprintManager --> DeviceCommandRunner
