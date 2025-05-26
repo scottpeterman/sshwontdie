@@ -481,22 +481,13 @@ We welcome contributions across all languages:
 
 Each library maintains its own license. Check individual directories for specific licensing terms.
 
-## 🏆 Success Stories
 
-SSHWontDie libraries are used in production by:
-
-- **Network Operations Centers** - Device monitoring and management
-- **System Integrators** - Multi-vendor network deployments  
-- **MSPs** - Customer network automation
-- **Enterprise IT** - Infrastructure management
-- **DevOps Teams** - Network configuration as code
 
 ## 📞 Support and Community
 
 - **Issues** - Report problems in the main repository
 - **Discussions** - Share use cases and get help
-- **Documentation** - Each library has detailed README files
-- **Examples** - Real-world usage examples in each directory
+- **Documentation** - Each library has d
 
 ---
 
